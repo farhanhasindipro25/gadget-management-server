@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }))
 //application routes
 app.use('/api/v1/users', userRoutes)
 
-app.get('/', async (req: Request, res: any) => {
+app.get('/', async (req: Request, res: Response) => {
   res.send('Server running successfully!')
 })
 
