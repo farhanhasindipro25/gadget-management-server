@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "J:\\WEB 2.0\\l2b2-full-stack-a5-server-side-farhanhasindipro25\\gadget-management-dashboard-server\\logs\\winston\\successLogs\\.883d7501db8e5e7ad1c91ca0ee78b0ac994b3ad9-audit.json",
+    "files": [
+        {
+            "date": 1706734630893,
+            "name": "J:\\WEB 2.0\\l2b2-full-stack-a5-server-side-farhanhasindipro25\\gadget-management-dashboard-server\\logs\\winston\\successLogs\\GM-01-02-24-02-error.log",
+            "hash": "15d7e72dbd23eca3ef7bb0056e2b734d23e1d60baaa77f6db837d23beab0f378"
+        }
+    ],
+    "hashType": "sha256"
+}
