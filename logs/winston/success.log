@@ -1,0 +1,94 @@
+{"level":"info","message":"Database coonnection is successfull!"}
+{"level":"info","message":"App listening to port 5000"}
+{"level":"info","message":"Database coonnection is successfull!"}
+{"level":"info","message":"App listening to port 5000"}
+{"level":"info","message":"Database coonnection is successfull!"}
+{"level":"info","message":"App listening to port 5000"}
+{"level":"info","message":"Database coonnection is successfull!"}
+{"level":"info","message":"App listening to port 5000"}
+{"level":"info","message":"Database coonnection is successfull!"}
+{"level":"info","message":"App listening to port 5000"}
+{"level":"info","message":"Database coonnection is successfull!"}
+{"level":"info","message":"App listening to port 5000"}
+{"level":"info","message":"Database coonnection is successfull!"}
+{"level":"info","message":"App listening to port 5000"}
+{"level":"info","message":"Database coonnection is successfull!"}
+{"level":"info","message":"App listening to port 5000"}
+{"level":"info","message":"Database coonnection is successfull!"}
+{"level":"info","message":"App listening to port 5000"}
+{"level":"info","message":"Database coonnection is successfull!"}
+{"level":"info","message":"App listening to port 5000"}
+{"level":"info","message":"Database coonnection is successfull!"}
+{"level":"info","message":"App listening to port 5000"}
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+2024-01-31T20:42:19.013Z [Gadget Management] info: Database coonnection is successfull!
+2024-01-31T20:42:19.018Z [Gadget Management] info: App listening to port 5000
+2024-01-31T20:42:34.935Z [Gadget Management] info: Database coonnection is successfull!
+2024-01-31T20:42:34.939Z [Gadget Management] info: App listening to port 5000
+2024-01-31T20:42:58.808Z [Gadget Management] info: Database coonnection is successfull!
+2024-01-31T20:42:58.812Z [Gadget Management] info: App listening to port 5000
+2024-01-31T20:43:09.712Z [Gadget Management] info: Database coonnection is successfull!
+2024-01-31T20:43:09.716Z [Gadget Management] info: App listening to port 5000
+2024-01-31T20:43:11.812Z [Gadget Management] info: Database coonnection is successfull!
+2024-01-31T20:43:11.816Z [Gadget Management] info: App listening to port 5000
+2024-01-31T20:43:35.405Z [Gadget Management] info: Database coonnection is successfull!
+2024-01-31T20:43:35.410Z [Gadget Management] info: App listening to port 5000
+2024-01-31T20:43:41.702Z [Gadget Management] info: Database coonnection is successfull!
+2024-01-31T20:43:41.706Z [Gadget Management] info: App listening to port 5000
+function toDateString() { [native code] } [Gadget Management] info: Database coonnection is successfull!
+function toDateString() { [native code] } [Gadget Management] info: App listening to port 5000
+Thu Feb 01 2024 [Gadget Management] info: Database coonnection is successfull!
+Thu Feb 01 2024 [Gadget Management] info: App listening to port 5000
+Thu Feb 01 2024 2 [Gadget Management] info: Database coonnection is successfull!
+Thu Feb 01 2024 2 [Gadget Management] info: App listening to port 5000
+Thu Feb 01 2024 2:44:22 [Gadget Management] info: Database coonnection is successfull!
+Thu Feb 01 2024 2:44:22 [Gadget Management] info: App listening to port 5000
+Thu Feb 01 2024 2:44:53 [Gadget Management] info: Database coonnection is successfull!
+Thu Feb 01 2024 2:44:53 [Gadget Management] info: App listening to port 5000
+{
+  message: 'Database coonnection is successfull!',
+  level: 'info',
+  label: 'Gadget Management',
+  timestamp: '2024-01-31T20:44:59.315Z'
+}
+{
+  message: 'App listening to port 5000',
+  level: 'info',
+  label: 'Gadget Management',
+  timestamp: '2024-01-31T20:44:59.321Z'
+}
+{
+  message: 'Database coonnection is successfull!',
+  level: 'info',
+  label: 'Gadget Management',
+  timestamp: '2024-01-31T20:45:07.523Z'
+}
+{
+  message: 'App listening to port 5000',
+  level: 'info',
+  label: 'Gadget Management',
+  timestamp: '2024-01-31T20:45:07.529Z'
+}
+{
+  message: 'Database coonnection is successfull!',
+  level: 'info',
+  label: 'Gadget Management',
+  timestamp: '2024-01-31T20:45:19.584Z'
+}
+{
+  message: 'App listening to port 5000',
+  level: 'info',
+  label: 'Gadget Management',
+  timestamp: '2024-01-31T20:45:19.591Z'
+}
+Thu Feb 01 2024 2:45:20 [Gadget Management] info: Database coonnection is successfull!
+Thu Feb 01 2024 2:45:20 [Gadget Management] info: App listening to port 5000
+Thu Feb 01 2024 2:45:28 [Gadget Management] info: Database coonnection is successfull!
+Thu Feb 01 2024 2:45:28 [Gadget Management] info: App listening to port 5000
