@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from 'express'
-import { errorLogger } from '../../../common/logger'
 import userService from './user.service'
 
 const createUser = async (req: Request, res: Response, next: NextFunction) => {
@@ -12,11 +11,6 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
       data: result,
     })
   } catch (error) {
-    errorLogger.error(error)
-    res.status(400).json({
-      success: false,
-      message: 'Failed to create user',
-    })
     next(error)
   }
 }
