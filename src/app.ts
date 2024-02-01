@@ -1,5 +1,5 @@
 import cors from 'cors'
-import express, { Application, NextFunction, Request, Response } from 'express'
+import express, { Application } from 'express'
 import globalErrorHandler from './app/middlewares/globalErrorHandler'
 import { UserRoutes } from './app/modules/user/user.routes'
 
@@ -14,9 +14,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/api/v1/users', UserRoutes)
 
 // testing
-app.get('/', async (req: Request, res: Response, next: NextFunction) => {
-  // throw new ApiError(400, 'Something Went Wrong!')
-  res.send('Server running successfully!')
+app.get('/', (req: Request, res: Response, next: NextFunction) => {
+  console.log(x)
 })
 
 app.use(globalErrorHandler)
