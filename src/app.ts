@@ -14,9 +14,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/api/v1/users', UserRoutes)
 
 // testing
-app.get('/', (req: Request, res: Response, next: NextFunction) => {
-  console.log(x)
-})
+// app.get('/', (req: Request, res: Response, next: NextFunction) => {
+//   throw new Error('Testing error logger')
+// })
 
 app.use(globalErrorHandler)
 
