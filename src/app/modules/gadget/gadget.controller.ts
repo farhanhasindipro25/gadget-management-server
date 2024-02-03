@@ -1,20 +1,22 @@
-import { RequestHandler } from 'express';
+import { NextFunction, Request, RequestHandler, Response } from 'express';
+import httpStatus from 'http-status';
+import catchAsync from '../../../common/catchAsync';
+import sendResponse from '../../../common/sendResponse';
 import { GadgetService } from './gadget.service';
 
-const createGadget: RequestHandler = async (req, res, next) => {
-  try {
+const createGadget: RequestHandler = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
     const { gadget } = req.body;
     const result = await GadgetService.createGadget(gadget);
-
-    res.status(200).json({
+    next();
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
       success: true,
       message: 'New gadget has been added!',
       data: result,
     });
-  } catch (error) {
-    next(error);
-  }
-};
+  },
+);
 
 export const GadgetController = {
   createGadget,
