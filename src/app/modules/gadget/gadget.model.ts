@@ -21,6 +21,7 @@ const gadgetSchema = new Schema<IGadget>(
     model_number: {
       type: String,
       required: true,
+      unique: true,
     },
     category: {
       type: String,
