@@ -1,9 +1,15 @@
-import { Model } from 'mongoose'
+import { Model } from 'mongoose';
 
-export type IUser = {
-  id: string
-  email: string
-  password: string
+export interface IGadget {
+  product_title: string;
+  price: number;
+  quantity: number;
+  brand: string;
+  model_number: string;
+  category: string;
+  connectivity: string;
+  power_source: string;
+  features: string;
 }
 
-export type UserModel = Model<IUser, Record<string, unknown>>
+export type GadgetModel = Model<IGadget>;
