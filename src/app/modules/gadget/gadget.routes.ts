@@ -10,4 +10,6 @@ router.post(
   GadgetController.createGadget,
 );
 
+router.get('/', GadgetController.getGadgetsList);
+
 export const GadgetRoutes = router;
