@@ -5,3 +5,8 @@ Tue Feb 06 2024 3:10:0 [Gadget Management] error: Unhandled Rejection Detected. 
 Tue Feb 06 2024 3:10:18 [Gadget Management] error: Unhandled Rejection Detected. Server shutting down immediately! $regex has to be a string
 Tue Feb 06 2024 3:10:47 [Gadget Management] error: $regex has to be a string
 Tue Feb 06 2024 3:11:37 [Gadget Management] error: Unhandled Rejection Detected. Server shutting down immediately! andConditions is not defined
+Tue Feb 06 2024 3:18:4 [Gadget Management] error: Unhandled Rejection Detected. Server shutting down immediately! $and/$or/$nor must be a nonempty array
+Tue Feb 06 2024 3:19:13 [Gadget Management] error: Unhandled Rejection Detected. Server shutting down immediately! $and/$or/$nor must be a nonempty array
+Tue Feb 06 2024 3:20:7 [Gadget Management] error: Unhandled Rejection Detected. Server shutting down immediately! $and/$or/$nor must be a nonempty array
+Tue Feb 06 2024 3:21:19 [Gadget Management] error: Unhandled Rejection Detected. Server shutting down immediately! $regex has to be a string
+Tue Feb 06 2024 3:24:56 [Gadget Management] error: Unhandled Rejection Detected. Server shutting down immediately! $and/$or/$nor must be a nonempty array

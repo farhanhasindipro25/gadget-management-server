@@ -4,6 +4,7 @@ import catchAsync from '../../../common/helpers/catchAsync';
 import pick from '../../../common/helpers/pick';
 import sendResponse from '../../../common/helpers/sendResponse';
 import { paginationFields } from '../../../constants/pagination';
+import { IFilters } from '../../../interfaces/filters';
 import { IGadget } from './gadget.interface';
 import { GadgetService } from './gadget.service';
 
@@ -23,7 +24,14 @@ const createGadget: RequestHandler = catchAsync(
 
 const getGadgetsList = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const filters = pick(req.query, ['searchTerm']);
+    const filters = pick(req.query, [
+      'searchTerm',
+      'price',
+      'category',
+      'connectivity',
+      'power_source',
+      'features',
+    ]) as IFilters;
     const paginationOptions = pick(req.query, paginationFields);
     const result = await GadgetService.getGadgetsList(
       filters,

@@ -19,33 +19,58 @@ const getGadgetsList = async (
 ): Promise<IGenericResponse<IGadget[]>> => {
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelper.calculatePagination(paginationOptions);
-  const { searchTerm } = filters;
+  const { searchTerm, ...filterData } = filters;
+  const gadgetsSearchableFields = ['product_title', 'brand', 'model_number'];
+  const andConditions = [];
+  if (searchTerm) {
+    andConditions.push({
+      $or: gadgetsSearchableFields.map(field => ({
+        [field]: {
+          $regex: searchTerm,
+          $options: 'i',
+        },
+      })),
+    });
+  }
+  // const andConditions = [
+  //   {
+  //     $or: [
+  //       {
+  //         product_title: {
+  //           $regex: searchTerm,
+  //           $options: 'i', // case insensitive
+  //         },
+  //       },
+  //       {
+  //         brand: {
+  //           $regex: searchTerm,
+  //           $options: 'i', // case insensitive
+  //         },
+  //       },
+  //     ],
+  //   },
+  // ];
+  const query: { [key: string]: unknown } = {};
+  if (andConditions.length > 0) {
+    query.$and = andConditions;
+  }
 
-  const andConditions = [
-    {
-      $or: [
-        {
-          product_title: {
-            $regex: searchTerm,
-            $options: 'i', // case insensitive
-          },
-        },
-        {
-          brand: {
-            $regex: searchTerm,
-            $options: 'i', // case insensitive
-          },
-        },
-      ],
-    },
-  ];
+  if (Object.keys(filterData).length) {
+    andConditions.push({
+      $and: Object.entries(filterData).map(([field, value]) => ({
+        [field]: value,
+      })),
+    });
+  }
+
   const sortConditions: {
     [key: string]: SortOrder;
   } = {};
   if (sortBy && sortOrder) {
     sortConditions[sortBy] = sortOrder;
   }
-  const result = await Gadget.find({ $and: andConditions })
+
+  const result = await Gadget.find(query)
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);
