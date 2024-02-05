@@ -17,6 +17,11 @@ const createGadget: RequestHandler = catchAsync(
       success: true,
       message: 'New gadget has been added!',
       data: result,
+      meta: {
+        page: 0,
+        limit: 0,
+        total: 0
+      }
     });
     next();
   },

@@ -50,10 +50,9 @@ const getGadgetsList = async (
   //     ],
   //   },
   // ];
-  const query: { [key: string]: unknown } = {};
-  if (andConditions.length > 0) {
-    query.$and = andConditions;
-  }
+
+  const whereCondition =
+    andConditions.length > 0 ? { $and: andConditions } : {};
 
   if (Object.keys(filterData).length) {
     andConditions.push({
@@ -70,11 +69,11 @@ const getGadgetsList = async (
     sortConditions[sortBy] = sortOrder;
   }
 
-  const result = await Gadget.find(query)
+  const result = await Gadget.find(whereCondition)
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);
-  const total = await Gadget.countDocuments();
+  const total = await Gadget.countDocuments(whereCondition);
 
   return {
     meta: {
