@@ -30,6 +30,12 @@ const getGadgetsList = async (
             $options: 'i', // case insensitive
           },
         },
+        {
+          brand: {
+            $regex: searchTerm,
+            $options: 'i', // case insensitive
+          },
+        },
       ],
     },
   ];
