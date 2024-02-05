@@ -23,8 +23,12 @@ const createGadget: RequestHandler = catchAsync(
 
 const getGadgetsList = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
+    const filters = pick(req.query, ['searchTerm']);
     const paginationOptions = pick(req.query, paginationFields);
-    const result = await GadgetService.getGadgetsList(paginationOptions);
+    const result = await GadgetService.getGadgetsList(
+      filters,
+      paginationOptions,
+    );
 
     sendResponse<IGadget[]>(res, {
       statusCode: httpStatus.OK,

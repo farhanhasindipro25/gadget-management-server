@@ -1,5 +1,6 @@
 import { SortOrder } from 'mongoose';
 import { paginationHelper } from '../../../common/helpers/paginationHelper';
+import { IFilters } from '../../../interfaces/filters';
 import {
   IGenericResponse,
   IPaginationOptions,
@@ -13,18 +14,32 @@ const createGadget = async (payload: IGadget): Promise<IGadget> => {
 };
 
 const getGadgetsList = async (
+  filters: IFilters,
   paginationOptions: IPaginationOptions,
 ): Promise<IGenericResponse<IGadget[]>> => {
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelper.calculatePagination(paginationOptions);
+  const { searchTerm } = filters;
 
+  const andConditions = [
+    {
+      $or: [
+        {
+          product_title: {
+            $regex: searchTerm,
+            $options: 'i', // case insensitive
+          },
+        },
+      ],
+    },
+  ];
   const sortConditions: {
     [key: string]: SortOrder;
   } = {};
   if (sortBy && sortOrder) {
     sortConditions[sortBy] = sortOrder;
   }
-  const result = await Gadget.find()
+  const result = await Gadget.find({ $and: andConditions })
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);
