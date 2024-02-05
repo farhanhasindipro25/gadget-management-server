@@ -1,8 +1,10 @@
+import { SortOrder } from 'mongoose';
+
 export type IPaginationOptions = {
   page?: number;
   limit?: number;
   sortBy?: string;
-  sortOrder?: 'asc' | 'dsc';
+  sortOrder?: SortOrder;
 };
 
 export type IGenericResponse<T> = {
@@ -12,4 +14,12 @@ export type IGenericResponse<T> = {
     total: number;
   };
   data: T;
+};
+
+export type ICalculatedPaginationResult = {
+  page: number;
+  limit: number;
+  skip: number;
+  sortBy: string;
+  sortOrder: SortOrder;
 };

@@ -1,8 +1,8 @@
 import { NextFunction, Request, RequestHandler, Response } from 'express';
 import httpStatus from 'http-status';
-import catchAsync from '../../../common/catchAsync';
-import pick from '../../../common/pick';
-import sendResponse from '../../../common/sendResponse';
+import catchAsync from '../../../common/helpers/catchAsync';
+import pick from '../../../common/helpers/pick';
+import sendResponse from '../../../common/helpers/sendResponse';
 import { paginationFields } from '../../../constants/pagination';
 import { IGadget } from './gadget.interface';
 import { GadgetService } from './gadget.service';

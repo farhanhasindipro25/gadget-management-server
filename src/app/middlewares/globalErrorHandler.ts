@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 import { ErrorRequestHandler } from 'express';
 import { ZodError } from 'zod';
-import { errorLogger } from '../../common/logger';
+import { errorLogger } from '../../common/helpers/logger';
 import config from '../../config';
 import ApiError from '../../errors/ApiError';
 import handleValidationError from '../../errors/handleValidationError';

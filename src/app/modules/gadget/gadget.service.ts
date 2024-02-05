@@ -1,3 +1,5 @@
+import { SortOrder } from 'mongoose';
+import { paginationHelper } from '../../../common/helpers/paginationHelper';
 import {
   IGenericResponse,
   IPaginationOptions,
@@ -13,9 +15,19 @@ const createGadget = async (payload: IGadget): Promise<IGadget> => {
 const getGadgetsList = async (
   paginationOptions: IPaginationOptions,
 ): Promise<IGenericResponse<IGadget[]>> => {
-  const { page = 1, limit = 10 } = paginationOptions;
-  const skip = (page - 1) * limit;
-  const result = await Gadget.find().sort().skip(skip).limit(limit);
+  const { page, limit, skip, sortBy, sortOrder } =
+    paginationHelper.calculatePagination(paginationOptions);
+
+  const sortConditions: {
+    [key: string]: SortOrder;
+  } = {};
+  if (sortBy && sortOrder) {
+    sortConditions[sortBy] = sortOrder;
+  }
+  const result = await Gadget.find()
+    .sort(sortConditions)
+    .skip(skip)
+    .limit(limit);
   const total = await Gadget.countDocuments();
 
   return {

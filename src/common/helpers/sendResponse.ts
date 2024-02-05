@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import { IAPIResponse } from '../interfaces/apiResponse';
+import { IAPIResponse } from '../../interfaces/apiResponse';
 
 const sendResponse = <T>(res: Response, data: IAPIResponse<T>): void => {
   const responseData: IAPIResponse<T> = {
