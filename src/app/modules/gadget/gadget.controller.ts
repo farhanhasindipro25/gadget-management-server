@@ -9,7 +9,7 @@ import { IGadget } from './gadget.interface';
 import { GadgetService } from './gadget.service';
 
 const createGadget: RequestHandler = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response) => {
     const { gadget } = req.body;
     const result = await GadgetService.createGadget(gadget);
     sendResponse<IGadget>(res, {
@@ -23,7 +23,6 @@ const createGadget: RequestHandler = catchAsync(
         total: 0,
       },
     });
-    next();
   },
 );
 
@@ -69,25 +68,35 @@ const getGadgetDetails = catchAsync(
   },
 );
 
-const updateGadgetDetails = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
-    const id = req.params.id;
-    const updatedData = req.body;
-    const result = await GadgetService.updateGadgetDetails(id, updatedData);
+const updateGadgetDetails = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const updatedData = req.body;
+  const result = await GadgetService.updateGadgetDetails(id, updatedData);
 
-    sendResponse<IGadget>(res, {
-      statusCode: httpStatus.OK,
-      success: true,
-      message: 'Gadget information updated!',
-      data: result,
-    });
-    next();
-  },
-);
+  sendResponse<IGadget>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Gadget information updated!',
+    data: result,
+  });
+});
+
+const deleteGadget = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const result = await GadgetService.deleteGadget(id);
+
+  sendResponse<IGadget>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Gadget deleted successfully!',
+    data: result,
+  });
+});
 
 export const GadgetController = {
   createGadget,
   getGadgetsList,
   getGadgetDetails,
   updateGadgetDetails,
+  deleteGadget,
 };

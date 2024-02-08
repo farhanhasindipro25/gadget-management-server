@@ -99,9 +99,15 @@ const updateGadgetDetails = async (
   return result;
 };
 
+const deleteGadget = async (id: string): Promise<IGadget | null> => {
+  const result = await Gadget.findByIdAndDelete(id);
+  return result;
+};
+
 export const GadgetService = {
   createGadget,
   getGadgetsList,
   getGadgetDetails,
   updateGadgetDetails,
+  deleteGadget,
 };

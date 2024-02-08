@@ -10,12 +10,14 @@ router.post(
   GadgetController.createGadget,
 );
 
-router.get('/:id', GadgetController.getGadgetDetails);
 router.patch(
   '/:id',
   validateRequest(GadgetValidation.updateGadgetZodSchema),
   GadgetController.updateGadgetDetails,
 );
+router.get('/:id', GadgetController.getGadgetDetails);
 router.get('/', GadgetController.getGadgetsList);
+
+router.delete('/:id', GadgetController.deleteGadget);
 
 export const GadgetRoutes = router;
