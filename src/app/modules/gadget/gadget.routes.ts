@@ -11,7 +11,11 @@ router.post(
 );
 
 router.get('/:id', GadgetController.getGadgetDetails);
-router.patch('/:id', GadgetController.updateGadgetDetails);
+router.patch(
+  '/:id',
+  validateRequest(GadgetValidation.updateGadgetZodSchema),
+  GadgetController.updateGadgetDetails,
+);
 router.get('/', GadgetController.getGadgetsList);
 
 export const GadgetRoutes = router;
