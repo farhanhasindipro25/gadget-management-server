@@ -89,8 +89,19 @@ const getGadgetDetails = async (id: string): Promise<IGadget | null> => {
   return result;
 };
 
+const updateGadgetDetails = async (
+  id: string,
+  payload: Partial<IGadget>,
+): Promise<IGadget | null> => {
+  const result = await Gadget.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  });
+  return result;
+};
+
 export const GadgetService = {
   createGadget,
   getGadgetsList,
   getGadgetDetails,
+  updateGadgetDetails,
 };

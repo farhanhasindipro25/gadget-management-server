@@ -69,8 +69,25 @@ const getGadgetDetails = catchAsync(
   },
 );
 
+const updateGadgetDetails = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const id = req.params.id;
+    const updatedData = req.body;
+    const result = await GadgetService.updateGadgetDetails(id, updatedData);
+
+    sendResponse<IGadget>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Gadget information updated!',
+      data: result,
+    });
+    next();
+  },
+);
+
 export const GadgetController = {
   createGadget,
   getGadgetsList,
   getGadgetDetails,
+  updateGadgetDetails,
 };
