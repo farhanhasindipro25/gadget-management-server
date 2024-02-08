@@ -2,7 +2,7 @@ export type IAPIResponse<T> = {
   statusCode: number;
   success: boolean;
   message?: string | null;
-  meta: {
+  meta?: {
     page: number;
     limit: number;
     total: number;

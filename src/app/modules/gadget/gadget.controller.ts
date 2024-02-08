@@ -20,8 +20,8 @@ const createGadget: RequestHandler = catchAsync(
       meta: {
         page: 0,
         limit: 0,
-        total: 0
-      }
+        total: 0,
+      },
     });
     next();
   },
@@ -54,7 +54,23 @@ const getGadgetsList = catchAsync(
   },
 );
 
+const getGadgetDetails = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const id = req.params.id;
+    const result = await GadgetService.getGadgetDetails(id);
+
+    sendResponse<IGadget>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Gadget details data retrieved',
+      data: result,
+    });
+    next();
+  },
+);
+
 export const GadgetController = {
   createGadget,
   getGadgetsList,
+  getGadgetDetails,
 };

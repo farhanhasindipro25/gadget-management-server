@@ -51,9 +51,6 @@ const getGadgetsList = async (
   //   },
   // ];
 
-  const whereCondition =
-    andConditions.length > 0 ? { $and: andConditions } : {};
-
   if (Object.keys(filterData).length) {
     andConditions.push({
       $and: Object.entries(filterData).map(([field, value]) => ({
@@ -61,6 +58,8 @@ const getGadgetsList = async (
       })),
     });
   }
+  const whereCondition =
+    andConditions.length > 0 ? { $and: andConditions } : {};
 
   const sortConditions: {
     [key: string]: SortOrder;
@@ -85,7 +84,13 @@ const getGadgetsList = async (
   };
 };
 
+const getGadgetDetails = async (id: string): Promise<IGadget | null> => {
+  const result = await Gadget.findById(id);
+  return result;
+};
+
 export const GadgetService = {
   createGadget,
   getGadgetsList,
+  getGadgetDetails,
 };
