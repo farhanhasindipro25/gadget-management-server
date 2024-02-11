@@ -27,3 +27,36 @@ Filter by Category
 Filter by Connectivity
 Filter by Power Source
 Filter by Features
+
+Department is connected to Faculty.
+Faculty - Department -> One to many
+
+Faculty of Engineering
+Department of CSE
+Department of EEE
+Department of ME
+Department of CE
+
+Sales is connected to Gadget.
+Gadget - Sales -> One to many
+
+Samsung Galaxy
+Sale 1
+Sale 2
+Sale 3
+
+
+Gadget Sale
+ - title
+ - quantity
+ - Sale (reference)
+
+After populating
+ - title
+ - quantity
+ - Sale
+    - id
+    - title
+    - quantity
+    - buyer
+
