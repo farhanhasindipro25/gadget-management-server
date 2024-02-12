@@ -7,16 +7,18 @@ const salesSchema = new Schema<ISales>(
       type: String,
       required: true,
     },
-    quantity: {
-      type: Number,
-      required: true,
-    },
-    buyer_name: {
-      type: String,
+    sale: {
+      type: Schema.Types.ObjectId,
+      ref: 'Gadget',
       required: true,
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+  },
 );
 
 export const Sales = model<ISales, SalesModel>('Sales', salesSchema);

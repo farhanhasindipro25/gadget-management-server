@@ -1,0 +1,2 @@
+Tue Feb 13 2024 2:2:39 [Gadget Management] error: Unhandled Rejection Detected. Server shutting down immediately! First argument to `Model` constructor must be an object, **not** a string. Make sure you're calling `mongoose.model()`, not `mongoose.Model()`.
+Tue Feb 13 2024 2:5:55 [Gadget Management] error: Unhandled Rejection Detected. Server shutting down immediately! First argument to `Model` constructor must be an object, **not** a string. Make sure you're calling `mongoose.model()`, not `mongoose.Model()`.

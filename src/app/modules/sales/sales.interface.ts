@@ -1,9 +1,9 @@
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
+import { IGadget } from '../gadget/gadget.interface';
 
-export interface ISales {
+export type ISales = {
   product_title: string;
-  quantity: number;
-  buyer_name: string;
-}
+  sale: Types.ObjectId | IGadget;
+};
 
-export type SalesModel = Model<ISales>;
+export type SalesModel = Model<ISales, Record<string, unknown>>;
