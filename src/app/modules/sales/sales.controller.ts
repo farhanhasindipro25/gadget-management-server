@@ -60,8 +60,21 @@ const updateSaleDetails = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const deleteSale = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const result = await SalesService.deleteSale(id);
+
+  sendResponse<ISales>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Sale record deleted!',
+    data: result,
+  });
+});
+
 export const SalesController = {
   createSale,
   getSalesHistory,
   updateSaleDetails,
+  deleteSale,
 };

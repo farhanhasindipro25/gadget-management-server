@@ -17,5 +17,6 @@ router.patch(
   SalesController.updateSaleDetails,
 );
 router.get('/', SalesController.getSalesHistory);
+router.delete('/:id', SalesController.deleteSale);
 
 export const SalesRoutes = router;

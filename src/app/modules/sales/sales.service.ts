@@ -80,8 +80,14 @@ const updateSaleDetails = async (
   return result;
 };
 
+const deleteSale = async (id: string): Promise<ISales | null> => {
+  const result = await Sales.findByIdAndDelete(id);
+  return result;
+};
+
 export const SalesService = {
   createSale,
   getSalesHistory,
   updateSaleDetails,
+  deleteSale,
 };
