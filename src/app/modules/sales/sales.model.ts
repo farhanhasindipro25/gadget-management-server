@@ -3,7 +3,7 @@ import { ISales, SalesModel } from './sales.interface';
 
 const salesSchema = new Schema<ISales>(
   {
-    product_title: {
+    buyer_name: {
       type: String,
       required: true,
     },

@@ -32,24 +32,6 @@ const getGadgetsList = async (
       })),
     });
   }
-  // const andConditions = [
-  //   {
-  //     $or: [
-  //       {
-  //         product_title: {
-  //           $regex: searchTerm,
-  //           $options: 'i', // case insensitive
-  //         },
-  //       },
-  //       {
-  //         brand: {
-  //           $regex: searchTerm,
-  //           $options: 'i', // case insensitive
-  //         },
-  //       },
-  //     ],
-  //   },
-  // ];
 
   if (Object.keys(filterData).length) {
     andConditions.push({

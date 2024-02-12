@@ -1,7 +1,10 @@
-import { Request, RequestHandler, Response } from 'express';
+import { NextFunction, Request, RequestHandler, Response } from 'express';
 import httpStatus from 'http-status';
 import catchAsync from '../../../common/helpers/catchAsync';
+import pick from '../../../common/helpers/pick';
 import sendResponse from '../../../common/helpers/sendResponse';
+import { paginationFields } from '../../../constants/pagination';
+import { IFilters } from '../../../interfaces/filters';
 import { ISales } from './sales.interface';
 import { SalesService } from './sales.service';
 
@@ -23,6 +26,28 @@ const createSale: RequestHandler = catchAsync(
   },
 );
 
+const getSalesHistory = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const filters = pick(req.query, ['searchTerm', 'createdAt']) as IFilters;
+
+    const paginationOptions = pick(req.query, paginationFields);
+    const result = await SalesService.getSalesHistory(
+      filters,
+      paginationOptions,
+    );
+
+    sendResponse<ISales[]>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Sales history data retrieved',
+      meta: result.meta,
+      data: result.data,
+    });
+    next();
+  },
+);
+
 export const SalesController = {
   createSale,
+  getSalesHistory,
 };
