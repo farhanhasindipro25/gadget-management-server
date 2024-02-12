@@ -18,6 +18,7 @@ router.patch(
 router.get('/:id', GadgetController.getGadgetDetails);
 router.get('/', GadgetController.getGadgetsList);
 
+router.delete('/bulk-delete', GadgetController.bulkDeleteGadgets);
 router.delete('/:id', GadgetController.deleteGadget);
 
 export const GadgetRoutes = router;

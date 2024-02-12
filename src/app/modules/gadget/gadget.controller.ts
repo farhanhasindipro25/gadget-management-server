@@ -93,10 +93,38 @@ const deleteGadget = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const bulkDeleteGadgets = catchAsync(async (req: Request, res: Response) => {
+  const { ids } = req.body;
+  if (!ids || !Array.isArray(ids) || ids.length === 0) {
+    return sendResponse(res, {
+      statusCode: httpStatus.BAD_REQUEST,
+      success: false,
+      message: 'Invalid or empty array of gadget IDs',
+    });
+  }
+
+  const result = await GadgetService.bulkDeleteGadgets(ids);
+  if (result && result.length > 0) {
+    sendResponse<IGadget[]>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Gadgets deleted successfully!',
+      data: result,
+    });
+  } else {
+    sendResponse(res, {
+      statusCode: httpStatus.NOT_FOUND,
+      success: false,
+      message: 'No gadgets found with the provided IDs.',
+    });
+  }
+});
+
 export const GadgetController = {
   createGadget,
   getGadgetsList,
   getGadgetDetails,
   updateGadgetDetails,
   deleteGadget,
+  bulkDeleteGadgets,
 };

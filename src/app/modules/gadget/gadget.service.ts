@@ -86,10 +86,21 @@ const deleteGadget = async (id: string): Promise<IGadget | null> => {
   return result;
 };
 
+const bulkDeleteGadgets = async (ids: string[]): Promise<IGadget[]> => {
+  const gadgetsToDelete = await Gadget.find({ _id: { $in: ids } });
+  const deleteResult = await Gadget.deleteMany({ _id: { $in: ids } });
+  if (deleteResult.deletedCount && deleteResult.deletedCount > 0) {
+    return gadgetsToDelete;
+  } else {
+    return [];
+  }
+};
+
 export const GadgetService = {
   createGadget,
   getGadgetsList,
   getGadgetDetails,
   updateGadgetDetails,
   deleteGadget,
+  bulkDeleteGadgets,
 };
