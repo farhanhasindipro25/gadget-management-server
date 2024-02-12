@@ -10,7 +10,13 @@ const createSalesZodSchema = z.object({
     }),
   }),
 });
+const updateSaleZodSchema = z.object({
+  buyer_name: z.string({
+    required_error: 'Product title is required!',
+  }),
+});
 
 export const SalesValidation = {
   createSalesZodSchema,
+  updateSaleZodSchema,
 };

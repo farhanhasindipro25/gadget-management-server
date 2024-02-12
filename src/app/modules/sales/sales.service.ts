@@ -53,6 +53,7 @@ const getSalesHistory = async (
   }
 
   const result = await Sales.find(whereCondition)
+    .populate('sale')
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);
@@ -69,7 +70,18 @@ const getSalesHistory = async (
   };
 };
 
+const updateSaleDetails = async (
+  id: string,
+  payload: Partial<ISales>,
+): Promise<ISales | null> => {
+  const result = await Sales.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  });
+  return result;
+};
+
 export const SalesService = {
   createSale,
-  getSalesHistory
+  getSalesHistory,
+  updateSaleDetails,
 };

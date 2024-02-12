@@ -11,6 +11,11 @@ router.post(
   SalesController.createSale,
 );
 
+router.patch(
+  '/:id',
+  validateRequest(SalesValidation.updateSaleZodSchema),
+  SalesController.updateSaleDetails,
+);
 router.get('/', SalesController.getSalesHistory);
 
 export const SalesRoutes = router;

@@ -47,7 +47,21 @@ const getSalesHistory = catchAsync(
   },
 );
 
+const updateSaleDetails = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const updatedData = req.body;
+  const result = await SalesService.updateSaleDetails(id, updatedData);
+
+  sendResponse<ISales>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Buyer name information updated',
+    data: result,
+  });
+});
+
 export const SalesController = {
   createSale,
   getSalesHistory,
+  updateSaleDetails,
 };
