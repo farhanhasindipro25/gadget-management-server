@@ -33,7 +33,7 @@ userSchema.methods.doesUserExist = async function (
   return await User.findOne(
     { email },
     { email: 1, password: 1, needsPasswordChange: 1 },
-  );
+  )
 };
 
 userSchema.methods.doPasswordsMatch = async function (

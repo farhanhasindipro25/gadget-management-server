@@ -19,8 +19,6 @@ app.use('/api/v1', routes);
 //   throw new Error('Testing error logger')
 // })
 
-app.use(globalErrorHandler);
-
 // handle not found reponse
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.status(httpStatus.NOT_FOUND).json({
@@ -35,5 +33,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   });
   next();
 });
+
+app.use(globalErrorHandler);
 
 export default app;

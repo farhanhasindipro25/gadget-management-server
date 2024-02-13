@@ -1,9 +1,12 @@
 import httpStatus from 'http-status';
+import { Secret } from 'jsonwebtoken';
+import { JWTHelpers } from '../../../common/helpers/jwtHelpers';
+import config from '../../../config';
 import ApiError from '../../../errors/ApiError';
 import { User } from '../user/user.model';
-import { ILoginUser } from './auth.interface';
+import { ILoginUser, ILoginUserResponse } from './auth.interface';
 
-const loginUser = async (payload: ILoginUser) => {
+const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
   const { email, password } = payload;
 
   const user = new User();
@@ -20,9 +23,24 @@ const loginUser = async (payload: ILoginUser) => {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Incorrect Password!');
   }
 
+  const { needsPasswordChange } = doesUserExist;
+
+  const accessToken = JWTHelpers.createToken(
+    { email: doesUserExist.email },
+    config.jwt.secret as Secret,
+    config.jwt.expires_in as string,
+  );
+  const refreshToken = JWTHelpers.createToken(
+    { email: doesUserExist.email },
+    config.jwt.refresh_secret as Secret,
+    config.jwt.refresh_expires_in as string,
+  );
+
   return {
-    
-  }
+    accessToken,
+    refreshToken,
+    needsPasswordChange,
+  };
 };
 
 export const AuthService = {
