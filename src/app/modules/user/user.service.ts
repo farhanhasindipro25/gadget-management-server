@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt';
 import config from '../../../config';
 import ApiError from '../../../errors/ApiError';
 import { IUser } from './user.interface';
@@ -13,11 +12,6 @@ const createUser = async (user: IUser): Promise<IUser | null> => {
     // setting default password
     user.password = config.default_password as string;
   }
-  //hash password
-  user.password = await bcrypt.hash(
-    user.password,
-    Number(config.bcrypt_salt_rounds),
-  );
 
   const createdUser = await User.create(user);
 

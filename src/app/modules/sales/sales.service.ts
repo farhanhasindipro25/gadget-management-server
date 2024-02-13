@@ -9,7 +9,7 @@ import { ISales } from './sales.interface';
 import { Sales } from './sales.model';
 
 const createSale = async (payload: ISales): Promise<ISales> => {
-  const result = await Sales.create(payload);
+  const result = (await Sales.create(payload)).populate('sale');
   return result;
 };
 
@@ -76,7 +76,7 @@ const updateSaleDetails = async (
 ): Promise<ISales | null> => {
   const result = await Sales.findOneAndUpdate({ _id: id }, payload, {
     new: true,
-  });
+  }).populate('sale');
   return result;
 };
 
