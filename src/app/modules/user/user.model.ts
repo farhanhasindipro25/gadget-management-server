@@ -1,9 +1,9 @@
 import bcrypt from 'bcrypt';
 import { Schema, model } from 'mongoose';
 import config from '../../../config';
-import { IUser, UserModel } from './user.interface';
+import { IUser, IUserMethods, UserModel } from './user.interface';
 
-const userSchema = new Schema<IUser>(
+const userSchema = new Schema<IUser, Record<string, never>, IUserMethods>(
   {
     id: {
       type: String,
@@ -17,10 +17,31 @@ const userSchema = new Schema<IUser>(
     password: {
       type: String,
       required: true,
+      select: 0,
+    },
+    needsPasswordChange: {
+      type: Boolean,
+      default: true,
     },
   },
   { timestamps: true },
 );
+
+userSchema.methods.doesUserExist = async function (
+  email: string,
+): Promise<Partial<IUser> | null> {
+  return await User.findOne(
+    { email },
+    { email: 1, password: 1, needsPasswordChange: 1 },
+  );
+};
+
+userSchema.methods.doPasswordsMatch = async function (
+  givenPassword: string,
+  hashedPassword: string,
+): Promise<boolean> {
+  return await bcrypt.compare(givenPassword, hashedPassword);
+};
 
 // pre hook middleware
 userSchema.pre('save', async function (next) {
