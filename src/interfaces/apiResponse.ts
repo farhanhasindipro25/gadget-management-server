@@ -7,5 +7,5 @@ export type IAPIResponse<T> = {
     limit: number;
     total: number;
   };
-  data?: T | null;
+  data?: T | null | undefined;
 };

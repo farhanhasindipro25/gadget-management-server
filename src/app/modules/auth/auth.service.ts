@@ -4,7 +4,11 @@ import { JWTHelpers } from '../../../common/helpers/jwtHelpers';
 import config from '../../../config';
 import ApiError from '../../../errors/ApiError';
 import { User } from '../user/user.model';
-import { ILoginUser, ILoginUserResponse } from './auth.interface';
+import {
+  ILoginUser,
+  ILoginUserResponse,
+  IRefreshTokenResponse,
+} from './auth.interface';
 
 const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
   const { email, password } = payload;
@@ -43,6 +47,39 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
   };
 };
 
+const refreshToken = async (token: string): Promise<IRefreshTokenResponse> => {
+  // verify token
+  let verifiedToken = null;
+  const user = new User();
+  try {
+    verifiedToken = JWTHelpers.verifyToken(
+      token,
+      config.jwt.refresh_secret as Secret,
+    );
+  } catch (error) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Invalid Refresh Token');
+  }
+  const { email } = verifiedToken;
+  // checking deleted user's refresh token
+  const doesUserExist = await user.doesUserExist(email);
+  if (!doesUserExist) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist');
+  }
+  //generate new token
+  const newAccessToken = JWTHelpers.createToken(
+    {
+      email: doesUserExist.email,
+    },
+    config.jwt.secret as Secret,
+    config.jwt.expires_in as string,
+  );
+
+  return {
+    accessToken: newAccessToken,
+  };
+};
+
 export const AuthService = {
   loginUser,
+  refreshToken,
 };
