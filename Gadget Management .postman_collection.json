@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "50f1c193-09df-46d3-b8bf-d78af99bad83",
+		"name": "Gadget Management ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25189026"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Signup User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {\r\n        \"email\":\"dipro@gmail.com\",\r\n        \"password\":\"password\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/create-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"create-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"dipro@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GADGETMANAGEMENT}}/auth/login",
+							"host": [
+								"{{GADGETMANAGEMENT}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cookies\":{\r\n        \"refreshToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRpcHJvM0BnbWFpbC5jb20iLCJpYXQiOjE3MDc5MTgyNDUsImV4cCI6MTczOTQ1NDI0NX0.2FuryQN3LzMUjhzfwktuM9M8BWj8AOWW8iMQdbYZMPc\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GADGETMANAGEMENT}}/auth/refresh-token",
+							"host": [
+								"{{GADGETMANAGEMENT}}"
+							],
+							"path": [
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gadget Management",
+			"item": [
+				{
+					"name": "Create Gadget",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRpcHJvQGdtYWlsLmNvbSIsImlhdCI6MTcwNzk0MDMwMCwiZXhwIjoxNzA4MDI2NzAwfQ.G5H-e9wGbxLpeiKPl0Ln79NRbF2MU8AL7WfL1JwEYxA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"gadget\": {\r\n        \"product_title\": \"TEST PHONE\",\r\n        \"price\": 300.99,\r\n        \"quantity\": 50,\r\n        \"brand\": \"TechCorp\",\r\n        \"model_number\": \"XYZ123\",\r\n        \"category\": \"Electronics\",\r\n        \"connectivity\": \"4G\",\r\n        \"power_source\": \"UPS\",\r\n        \"features\": \"Touchscreen, High-resolution camera, Facial recognition\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GADGETMANAGEMENT}}/gadgets/create-gadget",
+							"host": [
+								"{{GADGETMANAGEMENT}}"
+							],
+							"path": [
+								"gadgets",
+								"create-gadget"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Gadgets List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRpcHJvQGdtYWlsLmNvbSIsImlhdCI6MTcwNzkyMjg0MSwiZXhwIjoxNzA4MDA5MjQxfQ.Hj5DFdnn1d5YC5BNJaVg0yjkNZMXccz9Xo2RIEk8wOk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{GADGETMANAGEMENT}}/gadgets",
+							"host": [
+								"{{GADGETMANAGEMENT}}"
+							],
+							"path": [
+								"gadgets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Gadget Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{GADGETMANAGEMENT}}/gadgets/65cdadc8712d74a6e10e09a1",
+							"host": [
+								"{{GADGETMANAGEMENT}}"
+							],
+							"path": [
+								"gadgets",
+								"65cdadc8712d74a6e10e09a1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Gadget Details",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product_title\":\"Motorolla\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GADGETMANAGEMENT}}/gadgets/65cdadc8712d74a6e10e09a1",
+							"host": [
+								"{{GADGETMANAGEMENT}}"
+							],
+							"path": [
+								"gadgets",
+								"65cdadc8712d74a6e10e09a1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Gadget",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{GADGETMANAGEMENT}}/gadgets/65cdadc8712d74a6e10e09a1",
+							"host": [
+								"{{GADGETMANAGEMENT}}"
+							],
+							"path": [
+								"gadgets",
+								"65cdadc8712d74a6e10e09a1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sales Management",
+			"item": [
+				{
+					"name": "Create Sale",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sale\": {\r\n        \"buyer_name\": \"Farhan Hasin Dipro\",\r\n        \"sale\": \"65ca922eb5d7a97d95b238f5\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GADGETMANAGEMENT}}/sales/sell-gadget",
+							"host": [
+								"{{GADGETMANAGEMENT}}"
+							],
+							"path": [
+								"sales",
+								"sell-gadget"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sales History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{GADGETMANAGEMENT}}/sales",
+							"host": [
+								"{{GADGETMANAGEMENT}}"
+							],
+							"path": [
+								"sales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Sale Details",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"buyer_name\": \"Farhan Hasin\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/sales/65cb674a61a0056aa58e3b3d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"sales",
+								"65cb674a61a0056aa58e3b3d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Sale Information",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "GADGETMANAGEMENT",
+			"value": "http://localhost:5000/api/v1"
+		}
+	]
+}
