@@ -5,7 +5,6 @@ export type IUser = {
   id: string;
   email: string;
   password: string;
-  needsPasswordChange: true | false;
 };
 
 export type IUserMethods = {

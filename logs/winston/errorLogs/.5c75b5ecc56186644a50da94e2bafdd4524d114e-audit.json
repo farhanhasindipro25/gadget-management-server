@@ -6,21 +6,6 @@
     "auditLog": "J:\\WEB 2.0\\l2b2-full-stack-a5-server-side-farhanhasindipro25\\gadget-management-dashboard-server\\logs\\winston\\errorLogs\\.5c75b5ecc56186644a50da94e2bafdd4524d114e-audit.json",
     "files": [
         {
-            "date": 1706734635166,
-            "name": "J:\\WEB 2.0\\l2b2-full-stack-a5-server-side-farhanhasindipro25\\gadget-management-dashboard-server\\logs\\winston\\errorLogs\\GM-01-02-24-02-error.log",
-            "hash": "fa4369166928189513be53422547a3c128e19c10f6441c97d4f9c0e954aea58d"
-        },
-        {
-            "date": 1706735875108,
-            "name": "J:\\WEB 2.0\\l2b2-full-stack-a5-server-side-farhanhasindipro25\\gadget-management-dashboard-server\\logs\\winston\\errorLogs\\GM-01-02-24-03-error.log",
-            "hash": "38432ca70abfb3c763a5e22ad4e2d70bb48863c784584d1c5bd37e5d2f6d211a"
-        },
-        {
-            "date": 1706738415016,
-            "name": "J:\\WEB 2.0\\l2b2-full-stack-a5-server-side-farhanhasindipro25\\gadget-management-dashboard-server\\logs\\winston\\errorLogs\\GM-01-02-24-04-error.log",
-            "hash": "d5be139bd15797ad56395687afb2f459ea1a6577ea71a77888d208dd95281564"
-        },
-        {
             "date": 1706822200941,
             "name": "J:\\WEB 2.0\\l2b2-full-stack-a5-server-side-farhanhasindipro25\\gadget-management-dashboard-server\\logs\\winston\\errorLogs\\GM-02-02-24-03-error.log",
             "hash": "c7d40fe6a1f53531abdbf077947b1c7c11b25f60e63f85e84bf2a749922dc2cd"
@@ -154,6 +139,11 @@
             "date": 1707939982309,
             "name": "J:\\WEB 2.0\\l2b2-full-stack-a5-server-side-farhanhasindipro25\\gadget-management-dashboard-server\\logs\\winston\\errorLogs\\GM-15-02-24-01-error.log",
             "hash": "19adc205aa2be38272f75d3a6e8862b24cbca214eed99bcfa64af31d8598136d"
+        },
+        {
+            "date": 1707977245572,
+            "name": "J:\\WEB 2.0\\l2b2-full-stack-a5-server-side-farhanhasindipro25\\gadget-management-dashboard-server\\logs\\winston\\errorLogs\\GM-15-02-24-12-error.log",
+            "hash": "d2c0c00eea3ddd9f075d49c9d58d66da4281c9cc10ce3ecee3ad35d02a7a8301"
         }
     ],
     "hashType": "sha256"

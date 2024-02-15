@@ -27,8 +27,6 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Incorrect Password!');
   }
 
-  const { needsPasswordChange } = doesUserExist;
-
   const accessToken = JWTHelpers.createToken(
     { email: doesUserExist.email },
     config.jwt.secret as Secret,
@@ -42,8 +40,7 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
 
   return {
     accessToken,
-    refreshToken,
-    needsPasswordChange,
+    refreshToken
   };
 };
 
