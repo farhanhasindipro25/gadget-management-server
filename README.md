@@ -66,3 +66,29 @@
 4. Search Sale Information (GET)
 5. Edit Sale Information (PATCH)
 6. Delete Sale Information (DELETE)
+
+#### Reference of Sales and Gadgets
+
+Sales is connected to Gadget.
+Gadget - Sales -> One to many
+
+Samsung Galaxy
+Sale 1
+Sale 2
+Sale 3
+
+Gadget Sale
+
+- title
+- quantity
+- Sale (reference)
+
+After populating
+
+- title
+- quantity
+- Sale
+  - id
+  - title
+  - quantity
+  - buyer
