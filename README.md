@@ -1,6 +1,8 @@
 # GADGET MANAGEMENT SYSTEM
 
-### DOCUMENTATION LINK:
+**I deployed this web service in Vercel, and it seems to conflict with SwaggerUI. To access the doc, run the project locally in your machine.**
+
+### DOCUMENTATION LINK: `http://localhost:5000/docs`
 
 ### HOW TO SETUP THIS PROJECT
 
