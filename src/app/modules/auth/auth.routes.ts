@@ -24,10 +24,8 @@ const router = express.Router();
  *       content:
  *         application/json:
  *           example:
- *             {
- *                email: "user@example.com",
- *                password: "userPassword123"
- *             }
+ *                email: user@example.com,
+ *                password: userPassword12
  *     responses:
  *       200:
  *         description: User login successful

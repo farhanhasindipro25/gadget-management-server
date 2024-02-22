@@ -7,24 +7,6 @@ const router = express.Router();
 
 /**
  * @swagger
- * components:
- *    schemas:
- *      User:
- *        type: object
- *        properties:
- *          email:
- *            type: string
- *            description: User email needed for user creation
- *          password:
- *            type: string
- *            description: User password needed for user creation
- *        example:
- *          email: dipro@gmail.com
- *          password: password123!@#
- */
-
-/**
- * @swagger
  * tags:
  *   name: Users
  *   description: API endpoints related to user management
@@ -42,12 +24,9 @@ const router = express.Router();
  *       content:
  *         application/json:
  *           example:
- *                 {
- *                   "user": {
- *                        "email":"dipro@gmail.com",
- *                        "password":"password"
- *                   }
- *                 }
+ *              user
+ *                email: user@example.com,
+ *                password: userPassword123
  *     responses:
  *       200:
  *         description: Successful user creation
@@ -70,6 +49,24 @@ const router = express.Router();
  *             example:
  *               error: "Internal Server Error"
  *               message: "Something went wrong"
+ */
+
+/**
+ * @swagger
+ * components:
+ *    schemas:
+ *      User:
+ *        type: object
+ *        properties:
+ *          email:
+ *            type: string
+ *            description: User email needed for user creation
+ *          password:
+ *            type: string
+ *            description: User password needed for user creation
+ *        example:
+ *          email: dipro@gmail.com
+ *          password: password123!@#
  */
 
 router.post(
