@@ -8,6 +8,7 @@ const path_1 = __importDefault(require("path"));
 const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const config_1 = __importDefault(require("../../config"));
+const CSS_URL = 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css';
 const options = {
     definition: {
         openapi: '3.0.0',
@@ -30,7 +31,7 @@ const options = {
 };
 const swaggerSpec = (0, swagger_jsdoc_1.default)(options);
 function setupSwagger(app) {
-    app.use('/docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerSpec));
+    app.use('/docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerSpec, { customCssUrl: CSS_URL }));
     console.log(`Docs available at http://localhost:${config_1.default.port}/docs`);
 }
 exports.setupSwagger = setupSwagger;
