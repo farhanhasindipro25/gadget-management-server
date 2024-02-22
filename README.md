@@ -1,62 +1,68 @@
-Features
+# GADGET MANAGEMENT SYSTEM
 
------> Access Dashboard (Use JWT)
-Register
-Login
+# DOCUMENTATION LINK:
 
------> Electric Gadget Management CRUD Operations
-Add New Electric Gadget (POST)
-Delete Electric Gadget (DELETE)
-Edit Electric Gadget (PATCH)
-View Electric Gadgets List (GET)
-View Electric Gadgets Details (GET)
-BULK Delete All Electric Gadgets (DELETE)
+### HOW TO SETUP THIS PROJECT
 
------> Sales Management CRUD Operations
-List of products to sell (GET)
-Sell Product (POST)
-Sales History (GET)
+1. Clone this repository
 
------> Search and Filter Operations
-Search by Product Title
-Filter by Price Range
-Filter by Release Date
-Filter by Brand (Search)
-Filter by Model Number (Search)
-Filter by Category
-Filter by Connectivity
-Filter by Power Source
-Filter by Features
+`https://github.com/Porgramming-Hero-web-course/l2b2-full-stack-a5-server-side-farhanhasindipro25.git`
 
-Department is connected to Faculty.
-Faculty - Department -> One to many
+2. Install all essentials
 
-Faculty of Engineering
-Department of CSE
-Department of EEE
-Department of ME
-Department of CE
+`yarn install`
 
-Sales is connected to Gadget.
-Gadget - Sales -> One to many
+3. Run on development server
 
-Samsung Galaxy
-Sale 1
-Sale 2
-Sale 3
+`yarn start`
 
+### TECHNOLOGIES USED
 
-Gadget Sale
- - title
- - quantity
- - Sale (reference)
+- Typescript
+- ExpressJS
+- MongoDB
+- Mongoose
+- Zod
+- Prettier
+- Eslint
+- Winston
+- Husky
+- Lint staged
+- Swagger
 
-After populating
- - title
- - quantity
- - Sale
-    - id
-    - title
-    - quantity
-    - buyer
+### CODEBASE INSIGHTS
 
+- Modular Architecture
+- Authentication using JSON WEB TOKENS
+- Info and Error Logging
+- Well defined date-time based terminal
+- Pre-commit setup with Husky and lint-staged
+- Efficient use of EsLint to get rid of unused imports, variables, etc.
+- Swagger documentation
+- Postman file with all API endpoints
+
+### FEATURES
+
+**USER MANAGEMENT**
+
+1. User Creation (POST)
+2. User Login (POST)
+
+**GADGET MANAGEMENT**
+
+1. Add New Electric Gadget (POST)
+2. Delete Electric Gadget (DELETE)
+3. Edit Electric Gadget (PATCH)
+4. View Electric Gadgets List (GET)
+5. View Electric Gadgets Details (GET)
+6. Search, Sort and Filter Gadgets (GET)
+7. BULK Delete Selected Electric Gadgets (DELETE)
+
+**SALES MANAGEMENT**
+
+1. List of products to sell (GET)
+2. Sell Product (POST)
+3. Sales History (GET)
+4. Search Sale Information (GET)
+5. Edit Sale Information (PATCH)
+6. Delete Sale Information (DELETE)
