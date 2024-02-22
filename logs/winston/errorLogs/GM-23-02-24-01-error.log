@@ -1,0 +1,1 @@
+Fri Feb 23 2024 1:8:29 [Gadget Management] error: Unhandled Rejection Detected. Server shutting down immediately! Cast to ObjectId failed for value "id1" (type string) at path "_id" for model "Gadget"

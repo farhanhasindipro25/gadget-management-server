@@ -112,7 +112,6 @@ const router = express.Router();
  *               error: "Internal Server Error"
  *               message: "Something went wrong"
  */
-
 router.post(
   '/create-gadget',
   validateRequest(GadgetValidation.createGadgetZodSchema),
@@ -169,7 +168,6 @@ router.post(
  *               error: "Internal Server Error"
  *               message: "Something went wrong"
  */
-
 router.patch(
   '/:id',
   validateRequest(GadgetValidation.updateGadgetZodSchema),
@@ -244,11 +242,122 @@ router.patch(
  *               error: "Internal Server Error"
  *               message: "Something went wrong"
  */
-
 router.get('/:id', GadgetController.getGadgetDetails);
+
+/**
+ * @swagger
+ * /gadgets/{id}:
+ *   get:
+ *     summary: Get gadget details
+ *     description: Endpoint to retrieve details of a specific gadget.
+ *     tags: [Gadgets]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID of the gadget to retrieve details
+ *     responses:
+ *       200:
+ *         description: Gadget details retrieved
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "Gadget details retrieved"
+ *               data: { result }
+ *       404:
+ *         description: Gadget not found
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: "Not Found"
+ *               message: "Gadget not found with the provided ID"
+ *       500:
+ *         description: Internal Server Error
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: "Internal Server Error"
+ *               message: "Something went wrong"
+ */
 router.get('/', GadgetController.getGadgetsList);
 
+/**
+ * @swagger
+ * /gadgets/bulk-delete:
+ *   delete:
+ *     summary: Delete multiple gadgets
+ *     description: Endpoint to delete multiple gadgets based on their IDs.
+ *     tags: [Gadgets]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           example:
+ *             ids: ["id1", "id2", "id3"]
+ *     responses:
+ *       200:
+ *         description: Gadgets deleted successfully
+ *         content:
+ *           application/json:
+ *             example:
+ *               success: true
+ *               message: Gadgets deleted successfully!
+ *               data: [result]
+ *       400:
+ *         description: Bad request
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: "Validation error"
+ *               message: "Invalid request payload"
+ *       404:
+ *         description: Not Found
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: "Not Found"
+ *               message: "No gadgets found with the provided IDs."
+ *       500:
+ *         description: Internal Server Error
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: "Internal Server Error"
+ *               message: "Something went wrong"
+ */
 router.delete('/bulk-delete', GadgetController.bulkDeleteGadgets);
+
+/**
+ * @swagger
+ * /gadgets/{id}:
+ *   delete:
+ *     summary: Delete a gadget
+ *     description: Endpoint to delete a specific gadget.
+ *     tags: [Gadgets]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID of the gadget to delete
+ *     responses:
+ *       200:
+ *         description: Gadget deleted successfully
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "Gadget deleted successfully!"
+ *               data: { result}
+ *       404:
+ *         description: Gadget not found
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: "Not Found"
+ */
 router.delete('/:id', GadgetController.deleteGadget);
 
 export const GadgetRoutes = router;
