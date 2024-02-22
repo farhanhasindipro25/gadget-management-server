@@ -14,11 +14,11 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//application routes
-app.use('/api/v1', routes);
-
 // Setup Swagger documentation
 setupSwagger(app);
+
+//application routes
+app.use('/api/v1', routes);
 
 // testing
 // app.get('/', (req: Request, res: Response, next: NextFunction) => {

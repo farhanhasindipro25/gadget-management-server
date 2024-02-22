@@ -1,4 +1,5 @@
 import { Application } from 'express';
+import path from 'path';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import config from '../../config';
@@ -18,11 +19,11 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:5000',
+        url: 'http://localhost:5000/api/v1',
       },
     ],
   },
-  apis: ['../../app/modules/user/user.routes.ts'],
+  apis: [path.resolve(__dirname, '../../app/modules/**/*.routes.ts')],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
