@@ -4,6 +4,9 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import config from '../../config';
 
+const CSS_URL =
+  'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css';
+
 const options = {
   definition: {
     openapi: '3.0.0',
@@ -29,6 +32,10 @@ const options = {
 const swaggerSpec = swaggerJSDoc(options);
 
 export function setupSwagger(app: Application): void {
-  app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  app.use(
+    '/docs',
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerSpec, { customCssUrl: CSS_URL }),
+  );
   console.log(`Docs available at http://localhost:${config.port}/docs`);
 }
