@@ -2,7 +2,6 @@
 /* eslint-disable no-console */
 import { ErrorRequestHandler } from 'express';
 import { ZodError } from 'zod';
-import { errorLogger } from '../../common/helpers/logger';
 import config from '../../config';
 import ApiError from '../../errors/ApiError';
 import handleCastError from '../../errors/handleCastError';
@@ -13,7 +12,7 @@ import { IGenericErrorMessage } from '../../interfaces/error';
 const globalErrorHandler: ErrorRequestHandler = (error, req, res) => {
   config.env === 'development'
     ? console.log('globalErrorHandler ~', error)
-    : errorLogger.error('globalErrorHandler ~', error);
+    : console.error('globalErrorHandler ~', error);
 
   let statusCode = 500;
   let message = 'Internal Server Error!';
