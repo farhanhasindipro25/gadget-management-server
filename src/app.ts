@@ -4,6 +4,7 @@ import express, { Application, NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
 import routes from './app/routes';
+import { setupSwagger } from './common/helpers/swagger';
 
 const app: Application = express();
 
@@ -15,6 +16,9 @@ app.use(express.urlencoded({ extended: true }));
 
 //application routes
 app.use('/api/v1', routes);
+
+// Setup Swagger documentation
+setupSwagger(app);
 
 // testing
 // app.get('/', (req: Request, res: Response, next: NextFunction) => {
