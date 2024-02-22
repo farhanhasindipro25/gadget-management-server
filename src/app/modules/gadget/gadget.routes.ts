@@ -175,6 +175,76 @@ router.patch(
   validateRequest(GadgetValidation.updateGadgetZodSchema),
   GadgetController.updateGadgetDetails,
 );
+
+/**
+ * @swagger
+ * /gadgets:
+ *   get:
+ *     summary: Get list of gadgets
+ *     description: Endpoint to retrieve a list of gadgets.
+ *     tags: [Gadgets]
+ *     parameters:
+ *       - in: query
+ *         name: searchTerm
+ *         schema:
+ *           type: string
+ *         description: Search term for filtering gadgets
+ *       - in: query
+ *         name: price
+ *         schema:
+ *           type: number
+ *         description: Filter gadgets by price
+ *       - in: query
+ *         name: category
+ *         schema:
+ *           type: string
+ *         description: Filter gadgets by category
+ *       - in: query
+ *         name: connectivity
+ *         schema:
+ *           type: string
+ *         description: Filter gadgets by connectivity options
+ *       - in: query
+ *         name: power_source
+ *         schema:
+ *           type: string
+ *         description: Filter gadgets by power source
+ *       - in: query
+ *         name: features
+ *         schema:
+ *           type: string
+ *         description: Filter gadgets by features
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Page number for paginated results
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 50
+ *         description: Number of results per page
+ *     responses:
+ *       200:
+ *         description: List of gadgets retrieved
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "All gadget data retrieved"
+ *               meta: { page: 1, limit: 10, total: 50 }
+ *               data: [{ gadget1 }, { gadget2 }, ...]
+ *       500:
+ *         description: Internal Server Error
+ *         content:
+ *           application/json:
+ *             example:
+ *               error: "Internal Server Error"
+ *               message: "Something went wrong"
+ */
+
 router.get('/:id', GadgetController.getGadgetDetails);
 router.get('/', GadgetController.getGadgetsList);
 
